@@ -19,9 +19,13 @@ export default function ProductForm() {
       body: JSON.stringify(productData),
     });
 
-    if (response.ok) {
-      mutate();
+    if (!response.ok) {
+      console.error(response.status);
+      return;
     }
+
+    mutate();
+    event.target.reset();
   }
 
   return (
